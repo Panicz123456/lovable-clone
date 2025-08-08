@@ -1,11 +1,9 @@
-import { serve } from 'inngest/next'
+import { serve } from "inngest/next";
 
-import { inngest } from '../../../inngest/client'
-import { codeAgentFunction } from "@/inngest/functions";
+import { helloWorld } from "@/inngest/functions";
+import { inngest } from "../../../inngest/client";
 
 export const { POST, GET, PUT } = serve({
   client: inngest,
-	functions: [
-		codeAgentFunction
-	],
+  functions: [helloWorld],
 });
