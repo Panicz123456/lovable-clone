@@ -36,7 +36,7 @@ const FileBreadcrumb = ({ filePath }: fileBreadcrumbProps) => {
 
   const renderBreadcrumbItems = () => {
     if (pathSegments.length <= maxSegments) {
-      // Show all segments if 4 or less
+      // pokazuje segment jak jest 4 lub miej
       return pathSegments.map((segment, index) => {
         const isLast = index === pathSegments.length - 1;
 
