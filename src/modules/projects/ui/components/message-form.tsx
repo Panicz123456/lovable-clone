@@ -8,7 +8,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { cn } from "@/lib/utils";
 import { useTRPC } from "@/trpc/client";
-import { formSchema, formSchemaType } from "../../schema";
+import { formSchema, formSchemaType } from "../../../../lib/schema";
 
 import { Button } from "@/components/ui/button";
 import { Form, FormField } from "@/components/ui/form";
