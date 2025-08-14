@@ -5,6 +5,7 @@ import { protectedProcedure, createTRPCRouter } from "@/trpc/init";
 import prisma from "@/lib/db";
 import { inngest } from "@/inngest/client";
 import { TRPCError } from "@trpc/server";
+import { consumeCredits } from "@/lib/usage";
 
 export const projectsRouter = createTRPCRouter({
   getOne: protectedProcedure
@@ -30,10 +31,10 @@ export const projectsRouter = createTRPCRouter({
 
       return existingProject;
     }),
-  getMany: protectedProcedure.query(async ({ctx}) => {
+  getMany: protectedProcedure.query(async ({ ctx }) => {
     const projects = await prisma.project.findMany({
       where: {
-        userId: ctx.auth.userId
+        userId: ctx.auth.userId,
       },
       orderBy: {
         updatedAt: "desc",
@@ -52,6 +53,23 @@ export const projectsRouter = createTRPCRouter({
       })
     )
     .mutation(async ({ input, ctx }) => {
+      try {
+        await consumeCredits();
+      } catch (error) {
+        // nie dziala jak nie ma kredytow tylko jak serio jest jakis blad
+        if (error instanceof Error) {
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+            message: "Something went wrong",
+          });
+        } else {
+          throw new TRPCError({
+            code: "TOO_MANY_REQUESTS",
+            message: "No credits left",
+          });
+        }
+      }
+      
       const createdProject = await prisma.project.create({
         data: {
           userId: ctx.auth.userId,
@@ -71,7 +89,6 @@ export const projectsRouter = createTRPCRouter({
       await inngest.send({
         name: "code-agent/run",
         data: {
-          
           value: input.value,
           projectId: createdProject.id,
         },
