@@ -2,6 +2,7 @@
 
 import { toast } from "sonner";
 import { useState } from "react";
+import { useClerk } from "@clerk/nextjs";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,11 +19,12 @@ import { formSchema, formSchemaType } from "@/lib/schema";
 import { PROJECT_TEMPLATES } from "../../constants";
 
 export const ProjectForm = () => {
+  const trpc = useTRPC();
+  const clerk = useClerk();
   const router = useRouter();
+  const queryClient = useQueryClient();
   const [isFocused, setIsFocused] = useState(false);
 
-  const trpc = useTRPC();
-  const queryClient = useQueryClient();
   const form = useForm<formSchemaType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -38,8 +40,10 @@ export const ProjectForm = () => {
         // TODO: Invalidate usage status
       },
       onError: (error) => {
-        // TODO: Redirect to pricing page
         toast.error(error.message);
+        if (error.data?.code === "UNAUTHORIZED") {
+          clerk.openSignIn();
+        }
       },
     })
   );

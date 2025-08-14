@@ -3,14 +3,14 @@ import Image from "next/image";
 import { ProjectForm } from "@/modules/home/ui/components/project-form";
 import { ProjectList } from "@/modules/home/ui/components/project-list";
 
-const page = () => {
+const Page = () => {
   return (
     <div className="flex flex-col max-w-5xl mx-auto w-full">
       <section className="space-y-6 py-[16vh] 2xl:py-48">
         <div className="flex flex-col items-center">
           <Image
             src="/logo.svg"
-            alt="Logo"
+            alt="Vibe"
             width={50}
             height={50}
             className="hidden md:block"
@@ -20,7 +20,7 @@ const page = () => {
           Build something with Vibe
         </h1>
         <p className="text-lg md:text-xl text-muted-foreground text-center">
-          Create stunning apps and websites with AI-powered chat
+          Create apps and websites by chatting with AI
         </p>
         <div className="max-w-3xl mx-auto w-full">
           <ProjectForm />
@@ -31,4 +31,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

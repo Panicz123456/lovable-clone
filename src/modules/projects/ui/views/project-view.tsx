@@ -1,9 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { Suspense, useState } from "react";
 import { EyeIcon, CodeIcon, CrownIcon } from "lucide-react";
 
 import { Fragment } from "@/generated/prisma";
+import { Button } from "@/components/ui/button";
+import { UserControl } from "@/components/user-control";
+import { FileExplorer } from "@/components/file-explorer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   ResizableHandle,
@@ -14,9 +18,6 @@ import {
 import { FragmentWeb } from "../components/fragment-web";
 import { ProjectHeader } from "../components/project-header";
 import { MessagesContainer } from "../components/messages-container";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import { FileExplorer } from "@/components/file-explorer";
 
 interface Props {
   projectId: string;
@@ -66,6 +67,7 @@ export const ProjectView = ({ projectId }: Props) => {
                     <CrownIcon /> Upgrade
                   </Link>
                 </Button>
+                <UserControl />
               </div>
             </div>
             <TabsContent value="preview">
