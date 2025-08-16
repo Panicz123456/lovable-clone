@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💜 Lovable Clone – AI-Powered App Builder
 
-## Getting Started
+Lovable Clone is a **full-stack AI-powered app builder** built from the ground up with modern tooling. It allows you to generate applications from simple prompts, orchestrated by programmable AI agents.
 
-First, run the development server:
+All built with **Next.js 15**, **React 19**, **Tailwind v4**, and a fully modern AI-first toolchain.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
+- **Frameworks & Core**
+  - [Next.js 15](https://nextjs.org/)  
+  - [React 19](https://react.dev/)  
+  - [Tailwind CSS v4](https://tailwindcss.com/)  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **AI & Agents**
+  - [@inngest/agent-kit](https://www.inngest.com/)  
+  - [@e2b/code-interpreter](https://e2b.dev/)  
+  - OpenAI / Anthropic / Grok integrations  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Authentication & Billing**
+  - [Clerk](https://clerk.com/) (`@clerk/nextjs`, `@clerk/themes`)  
 
-## Learn More
+- **Database & APIs**
+  - [Prisma](https://www.prisma.io/) (`@prisma/client`)  
+  - [tRPC](https://trpc.io/) (`@trpc/client`, `@trpc/server`, `@trpc/tanstack-react-query`)  
+  - [TanStack Query](https://tanstack.com/query)  
 
-To learn more about Next.js, take a look at the following resources:
+- **UI & Components**
+  - [shadcn/ui](https://ui.shadcn.com/) (built on Radix UI primitives)  
+  - [Lucide React](https://lucide.dev/)  
+  - [cmdk](https://cmdk.paco.me/)  
+  - [Embla Carousel](https://www.embla-carousel.com/)  
+  - [Recharts](https://recharts.org/)  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Utilities & Tooling**
+  - `react-hook-form`, `zod`, `superjson`  
+  - `date-fns`, `rate-limiter-flexible`  
+  - `clsx`, `tailwind-merge`, `class-variance-authority`  
+  - `random-word-slugs`, `react-error-boundary`  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📦 Dependencies
+Key versions used in this project:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```json
+"@clerk/nextjs": "^6.23.0",
+"@clerk/themes": "^2.4.8",
+"@e2b/code-interpreter": "^1.5.1",
+"@inngest/agent-kit": "^0.8.3",
+"@prisma/client": "^6.10.1",
+"@tanstack/react-query": "^5.80.10",
+"@trpc/client": "^11.4.2",
+"@trpc/server": "^11.4.2",
+"next": "15.3.4",
+"react": "^19.0.0",
+"react-dom": "^19.0.0",
+"tailwind-merge": "^3.3.1",
+"zod": "^3.25.67"
